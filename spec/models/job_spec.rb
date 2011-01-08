@@ -8,7 +8,8 @@ describe Job do
   it { should validate_presence_of(:email).with_message('Por favor indique su dirección de correo electrónico') }
   it { should validate_presence_of(:company_name).with_message('Por favor indique el nombre de la compañía') }
   it { should validate_numericality_of(:category).with_message('Por favor seleccione una categoría') }
-  it { should allow_value(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/).for(:email).with_message('Por favor indique una dirección de correo electrónico válida') }
+  it { should validate_format_of(:email).with('mail@mail.com').with_message('Por favor indique una dirección de correo electrónico válida') }
+  it { should validate_format_of(:email).not_with('mail_mail.com').with_message('Por favor indique una dirección de correo electrónico válida') }
   
   it do 
     should_have_db_columns(
