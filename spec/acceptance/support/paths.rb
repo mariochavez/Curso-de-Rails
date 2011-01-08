@@ -4,6 +4,10 @@ module NavigationHelpers
   def homepage
     "/"
   end
+
+  def new_job
+    "/jobs/new"
+  end
 end
 
 RSpec.configuration.include NavigationHelpers, :type => :acceptance
