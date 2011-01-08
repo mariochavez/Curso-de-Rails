@@ -40,5 +40,6 @@ group :test, :development do
   gem "rspec-rails", ">= 2.4.1"
   gem "steak", ">= 1.0.1"
   gem "capybara"
+  gem "launchy"
 end
 
