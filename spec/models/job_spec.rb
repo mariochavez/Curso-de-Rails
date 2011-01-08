@@ -1,5 +1,17 @@
 require 'spec_helper'
 
 describe Job do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should validate_presence_of(:title).with_message('Por favor indique un título') }
+  it { should validate_presence_of(:location).with_message('Por favor indique la ubicación') }
+  it { should validate_presence_of(:description).with_message('Por favor indique una descripción') }
+  it { should validate_presence_of(:contact).with_message('Por favor indique como recibir contacto por la oferta') }
+  it { should validate_presence_of(:email).with_message('Por favor indique su dirección de correo electrónico') }
+  it { should validate_presence_of(:company_name).with_message('Por favor indique el nombre de la compañía') }
+  it { should validate_numericality_of(:category).with_message('Por favor seleccione una categoría') }
+  it { should allow_value(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/).for(:email).with_message('Por favor indique una dirección de correo electrónico válida') }
+  
+  it do 
+    should_have_db_columns(
+    :company_name, :url, :location, :description, :contact, :category, :email)
+  end
 end

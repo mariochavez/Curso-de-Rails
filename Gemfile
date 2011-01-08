@@ -41,5 +41,6 @@ group :test, :development do
   gem "steak", ">= 1.0.1"
   gem "capybara"
   gem "launchy"
+  gem "shoulda"
 end
 
