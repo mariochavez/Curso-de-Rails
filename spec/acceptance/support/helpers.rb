@@ -1,5 +1,9 @@
 module HelperMethods
-  # Put helper methods you need to be available in all tests here.
+  def have_the_following(*fields)
+    fields.each do |field|
+      page.should have_css field
+    end
+  end
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance
