@@ -26,4 +26,19 @@ feature "Publicar Nuevas Ofertas De Empleo", %q{
     end
 
   end
+
+  scenario "Al llenar una oferta y tratar de ver el preview sin datos, debe de mostrar los campos que deben ser llenados" do
+    visit new_job_path
+
+    click_link_or_button 'Paso 2: ver oferta'
+
+    should_have_errors(
+      'Por favor indique un título',
+      'Por favor seleccione una categoría',
+      'Por favor indique la ubicación',
+      'Por favor indique una descripción',
+      'Por favor indique como recibir contacto por la oferta',
+      'Por favor indique su dirección de correo electrónico'
+    )       
+  end
 end
