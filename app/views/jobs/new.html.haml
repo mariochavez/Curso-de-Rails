@@ -1,0 +1,11 @@
+%h1 Paso 1: Crear oferta
+= simple_form_for @job do |f|
+  = f.input :title, :placeholder => 'Desarrollador rails'
+  = f.input :category
+  = f.input :location, :hint => 'Ej: Tijuana, Mexico'
+  = f.input :description
+  = f.input :contact
+  = f.input :company_name
+  = f.input :url
+  = f.input :email
+  = f.submit

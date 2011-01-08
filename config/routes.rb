@@ -1,4 +1,6 @@
 Empleosti::Application.routes.draw do
+  resources :jobs, :only => [ :new, :create ] 
+
   get "dashboard/index"
 
   root :to => "dashboard#index"
