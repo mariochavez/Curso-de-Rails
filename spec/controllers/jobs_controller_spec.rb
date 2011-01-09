@@ -10,12 +10,20 @@ describe JobsController do
   end
 
   describe "POST 'create'" do
+      it "test" do
+        @job = Job.new
+        Job.stub!(:"valid?").and_return(true)
+        Job.stub!(:save).and_return(true)
+        @job.should_receive(:save)
+        post :create, :job => { }
+      end
     context "al hacer POST con los datos correctos" do
-      before do 
+      before(:each) do 
         Job.stub!(:save).and_return(true)
         post :create, :job => { }
       end
-
+      
+      
       it { should assign_to :job }
       it { should redirect_to jobs_path }
       it { should set_the_flash }
