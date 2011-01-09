@@ -17,6 +17,17 @@ describe JobsController do
     end
   end
 
+  describe "GET 'show'" do
+    before(:each) do
+      Job.stub!(:find).and_return(job)
+      get :show, :id => 1
+    end
+
+    it { should assign_to :job }
+    it { should render_template :show }
+    it { should respond_with(:success) }
+  end
+
   describe "POST 'create'" do
     context "al hacer POST con los datos correctos" do
       before(:each) do 
@@ -26,19 +37,18 @@ describe JobsController do
       end
 
       it { should assign_to :job }
-      it { should redirect_to jobs_path(1) }
+      it { should redirect_to job_path(1) }
       it { should set_the_flash }
     end
 
     context "al hacer POST con los datos incorrectos" do
-      #before do
-      #  Job.stub!(:save).and_return(false)
-      #  post :create, :job => { }
-      #end
+      before do
+        post :create, :job => { }
+      end
 
-      #it { should assign_to :job }
-      #it { should render_template :new }
-      #it { should_not set_the_flash }
+      it { should assign_to :job }
+      it { should render_template :new }
+      it { should_not set_the_flash }
     end
   end
 end

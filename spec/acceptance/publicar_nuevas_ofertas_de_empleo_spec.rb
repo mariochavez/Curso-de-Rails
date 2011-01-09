@@ -44,27 +44,29 @@ feature "Publicar Nuevas Ofertas De Empleo", %q{
   end
 
   scenario "Al llenar una oferta y tratar de ver el preview, la oferta debera ser mostrada" do
+    job = Factory.build :job
+
     visit new_job
 
     fill_in_following(
-      'job_title' => 'Desarrollador rails',
-      'job_location' => 'Tijuana, Mexico',
-      'job_description' => 'Conocimiento de Ruby on Rails',
-      'job_contact' => 'Enviar CV a mario@jobs.com',
-      'job_company_name' => 'Decisiones Inteligentes',
-      'job_url' => 'http://www.decisionesinteligentes.com',
-      'job_email' => 'mario@jobs.com'
+      'job_title' => job.title,
+      'job_location' => job.location,
+      'job_description' => job.description,
+      'job_contact' => job.contact,
+      'job_company_name' => job.company_name,
+      'job_url' => job.url,
+      'job_email' => job.email
     )
     select 'Programacion', :from => 'job_category'
 
     click_link_or_button 'Paso 2: ver oferta'
-    save_and_open_page
-    page.should have_css 'h1', :text => 'Desarrollador rails'
-    page.should have_css 'h3', :text => 'Tijuana, Mexico'
-    page.should have_css 'p', :text => 'Conocimiento de Ruby on Rails'
-    page.should have_css 'p', :text => 'Enviar CV a mario@jobs.com'
-    page.should have_css 'h2', :text => 'Decisiones Inteligentes'
-    page.should have_css 'p', :text => 'http://www.decisionesinteligentes.com'
-    page.should have_css 'p', :text => 'mario@jobs.com'
+
+    page.should have_css 'h1', :text => job.title
+    page.should have_css 'h3', :text => job.location
+    page.should have_css 'p', :text => job.description
+    page.should have_css 'p', :text => job.contact
+    page.should have_css 'h2', :text => job.company_name
+    page.should have_css 'p', :text => job.url
+    page.should have_css 'p', :text => job.email
   end
 end
