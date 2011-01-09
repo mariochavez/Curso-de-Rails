@@ -11,7 +11,7 @@ describe JobsController do
 
   describe "POST 'create'" do
     context "al hacer POST con los datos correctos" do
-      setup do
+      before do 
         Job.stub!(:save).and_return(true)
         post :create, :job => { }
       end
@@ -22,7 +22,7 @@ describe JobsController do
     end
 
     context "al hacer POST con los datos incorrectos" do
-      setup do
+      before do
         Job.stub!(:save).and_return(false)
         post :create, :job => { }
       end
