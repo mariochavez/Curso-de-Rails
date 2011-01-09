@@ -19,9 +19,10 @@ es-MX:
     #     edit:
     #       email: 'E-mail.'
     hints:
-      location: 'Ej: Tijuana, Mexico'
+      location: 'Ciudad de la oferta'
     #   password: 'No special characters, please.'
     placeholders:
-      location: 'Ciudad de la oferta'
+      title: 'Desarrrollador Rails'
+      location: 'Tijuana, Mexico' 
 
 
