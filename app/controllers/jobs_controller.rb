@@ -14,7 +14,12 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find params[:id] 
+    if Job.exists? params[:id]
+      @job = Job.find params[:id] 
+      render :show
+    else
+      redirect_to root_path, :notice => 'Oferta no encontrada'
+    end
   end
 
 end

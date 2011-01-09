@@ -18,14 +18,30 @@ describe JobsController do
   end
 
   describe "GET 'show'" do
-    before(:each) do
-      Job.stub!(:find).and_return(job)
-      get :show, :id => 1
+    context "al mostrar un registro que si existe" do
+      before(:each) do
+        Job.stub!(:"exists?").and_return(true)
+        Job.stub!(:find).and_return(job)
+        Job.should_receive(:find)
+        get :show, :id => 1
+      end
+
+      it { should assign_to :job }
+      it { should render_template :show }
+      it { should respond_with(:success) }
     end
 
-    it { should assign_to :job }
-    it { should render_template :show }
-    it { should respond_with(:success) }
+    context "al intentar mostrar un registro que no existe" do
+      before(:each) do
+        Job.stub!(:"exists?").and_return(false)
+        Job.should_not_receive(:find)
+        get :show, :id => 1
+      end
+
+      it { should_not assign_to :job }
+      it { should redirect_to(root_path) }
+      it { should set_the_flash }
+    end
   end
 
   describe "POST 'create'" do
