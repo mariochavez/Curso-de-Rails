@@ -22,4 +22,15 @@ class JobsController < ApplicationController
     end
   end
 
+  def published
+    if Job.exists? params[:id]
+      @job = Job.find params[:id]
+
+      @job.published = true
+      @job.save
+
+      redirect_to root_path, :notice => 'La oferta fue publicada'
+    end
+  end
+
 end

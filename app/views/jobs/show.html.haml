@@ -5,3 +5,6 @@
 %h2 #{@job.company_name}
 %p #{@job.url}
 %p #{@job.email}
+
+= simple_form_for @job, :url => published_job_path(@job) do |f|
+  = f.submit 'Paso 3: publicar oferta'

@@ -77,7 +77,7 @@ feature "Publicar Nuevas Ofertas De Empleo", %q{
 
     click_link_or_button 'Paso 3: publicar oferta'
 
-    page.should have_css 'h1', :text => 'La oferta fue publicada'
+    page.should have_css 'span', :text => 'La oferta fue publicada'
   end
 
 end

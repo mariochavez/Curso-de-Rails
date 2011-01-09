@@ -1,5 +1,9 @@
 Empleosti::Application.routes.draw do
-  resources :jobs, :only => [ :new, :create, :show ] 
+  resources :jobs, :only => [ :new, :create, :show ]  do
+    member do
+      put 'published'
+    end
+  end
 
   get "dashboard/index"
 

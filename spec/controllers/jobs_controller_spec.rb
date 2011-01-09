@@ -17,6 +17,22 @@ describe JobsController do
     end
   end
 
+  describe "PUT 'published'" do
+    before(:each) do
+      Job.stub!(:"exists?").and_return(true)
+      Job.stub!(:find).and_return(job)
+      Job.stub!(:save).and_return(true)
+      JobMailer.stub!(:deliver_mail)
+      job.should_receive(:save)
+      put :published, :id => 1
+    end
+
+    it { should assign_to :job }
+    it { JobMailer.should_receive(:deliver_mail).once }
+    it { should redirect_to root_url }
+    it { should set_the_flash }
+  end
+
   describe "GET 'show'" do
     context "al mostrar un registro que si existe" do
       before(:each) do
