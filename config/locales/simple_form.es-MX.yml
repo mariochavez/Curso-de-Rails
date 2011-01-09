@@ -1,4 +1,4 @@
-en:
+es-MX:
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -19,6 +19,9 @@ en:
     #     edit:
     #       email: 'E-mail.'
     hints:
-      location: 'User name to sign in.'
+      location: 'Ej: Tijuana, Mexico'
     #   password: 'No special characters, please.'
+    placeholders:
+      location: 'Ciudad de la oferta'
+
 

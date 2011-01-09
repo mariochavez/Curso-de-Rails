@@ -1,0 +1,18 @@
+es-MX:
+  new_job: 'Nueva Oferta'
+  new_title: 'Paso 1: Crear oferta'
+
+  activerecord:
+    models:
+      job: 'Empleos'
+
+    attributes:
+      job:
+        title: 'Titulo'
+        description: 'Descripcion'
+        location: 'Ubicacion'
+        category: 'Categoria'
+        company_name: 'Empresa'
+        email: 'Correo electronico'
+        contact: 'Contacto'
+        url: 'Direccion web'
