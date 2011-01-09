@@ -13,6 +13,7 @@ describe Job do
   
   it do 
     should_have_db_columns(
-    :company_name, :url, :location, :description, :contact, :category, :email)
+    :company_name, :url, :location, :description, :contact, :category, :email, :published)
   end
+
 end

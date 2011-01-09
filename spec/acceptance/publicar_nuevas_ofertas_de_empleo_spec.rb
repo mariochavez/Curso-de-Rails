@@ -69,4 +69,15 @@ feature "Publicar Nuevas Ofertas De Empleo", %q{
     page.should have_css 'p', :text => job.url
     page.should have_css 'p', :text => job.email
   end
+
+  scenario "despues de ver el preview de la oferta, deseo publicarla" do
+    job = Factory :job
+
+    visit preview_job(job.to_param)
+
+    click_link_or_button 'Paso 3: publicar oferta'
+
+    page.should have_css 'h1', :text => 'La oferta fue publicada'
+  end
+
 end

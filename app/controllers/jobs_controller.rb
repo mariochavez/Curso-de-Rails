@@ -18,7 +18,7 @@ class JobsController < ApplicationController
       @job = Job.find params[:id] 
       render :show
     else
-      redirect_to root_path, :notice => 'Oferta no encontrada'
+      redirect_to root_path, :alert => 'Oferta no encontrada'
     end
   end
 
