@@ -11,5 +11,9 @@ require 'spec_helper'
 #   end
 # end
 describe JobsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "hash para el combo de categorias" do
+    it "debe de generar hash" do
+      helper.category_options.should == { 'Programacion' => 1, 'Diseno web' => 2 }
+    end
+  end
 end
