@@ -7,6 +7,7 @@ Factory.define :job do |j|
   j.contact "Enviar CV a mario@jobs.com"
   j.company_name "Decisiones Inteligentes"
   j.email "mario@jobs.com"
+  j.url "http://www.decisionesinteligentes.com"
 end
 
 Factory.sequence :id do |s|

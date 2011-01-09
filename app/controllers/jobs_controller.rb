@@ -4,8 +4,10 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job ||= Job.new params[:job]
+    @job = Job.new params[:job]
 
+    puts @job.title
+    puts @job.errors.inspect
     if @job.save
       redirect_to root_path, :notice => 'La oferta ha sido creada'
     else
