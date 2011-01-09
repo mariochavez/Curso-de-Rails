@@ -11,6 +11,12 @@ module HelperMethods
     end
   end
 
+  def fill_in_following(fields={})
+    fields.each do |field, value|
+      fill_in field, :with => value
+    end
+  end
+
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance

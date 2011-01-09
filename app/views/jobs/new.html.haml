@@ -1,7 +1,7 @@
 %h1 #{t(:new_title)}
 = simple_form_for @job do |f|
   = f.input :title
-  = f.input :category
+  = f.input :category, :collection => category_options, :prompt => 'Seleccione una opcion'
   = f.input :location
   = f.input :description
   = f.input :contact

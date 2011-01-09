@@ -32,7 +32,6 @@ feature "Publicar Nuevas Ofertas De Empleo", %q{
 
     click_link_or_button 'Paso 2: ver oferta'
 
-    save_and_open_page
     should_have_errors(
       'Por favor indique un título',
       'Por favor seleccione una categoría',
@@ -42,5 +41,21 @@ feature "Publicar Nuevas Ofertas De Empleo", %q{
       'Por favor indique su dirección de correo electrónico',
       'Por favor indique el nombre de la compañía'
     )       
+  end
+
+  scenario "Al llenar una oferta y tratar de ver el preview, la oferta debera ser mostrada" do
+    visit new_job
+
+    fill_in_following(
+      'job_title' => 'Desarrollador rails',
+      'job_location' => 'Tijuana, Mexico'
+    )
+
+    select 'Programacion', :from => 'job_category'
+
+    click_link_or_button 'Paso 2: ver oferta'
+    save_and_open_page
+    page.should have_css 'h1', :text => 'Desarrollador rails'
+    page.should have_css 'h3', :text => 'Tijuana, Mexico'
   end
 end
