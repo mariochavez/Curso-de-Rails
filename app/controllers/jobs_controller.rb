@@ -29,6 +29,8 @@ class JobsController < ApplicationController
       @job.published = true
       @job.save
 
+      JobMailer.published(@job).deliver
+
       redirect_to root_path, :notice => 'La oferta fue publicada'
     end
   end

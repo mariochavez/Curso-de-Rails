@@ -6,6 +6,10 @@ describe JobsController do
     Factory.build(:job)
   end
 
+  let(:job_with_id) do
+    Factory.build(:job, :id => Factory.next(:id).to_i)
+  end
+
   let(:new_job_hash) do
     { :title => job.title, :description => job.description, :contact => job.contact, :url => job.url, :company_name => job.company_name, :category => job.category, :email => job.email, :location => job.location }
   end
@@ -20,10 +24,10 @@ describe JobsController do
   describe "PUT 'published'" do
     before(:each) do
       Job.stub!(:"exists?").and_return(true)
-      Job.stub!(:find).and_return(job)
+      Job.stub!(:find).and_return(job_with_id)
       Job.stub!(:save).and_return(true)
       JobMailer.stub!(:deliver_mail)
-      job.should_receive(:save)
+      job_with_id.should_receive(:save)
       put :published, :id => 1
     end
 

@@ -1,14 +1,14 @@
 class JobMailer < ActionMailer::Base
-  default :from => "from@example.com"
+  default :from => "mario@jobs.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
   #   en.job_mailer.published.subject
   #
-  def published
-    @greeting = "Hi"
+  def published job
+    @job = job
 
-    mail :to => "to@example.org"
+    mail :to => @job.email, :subject => "Empleos TI: #{@job.title}"
   end
 end
